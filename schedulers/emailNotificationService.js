@@ -1,3 +1,4 @@
+//
 // emailNotificationService.js
 const nodemailer = require('nodemailer');
 const connection = require('../database/connection'); // Ensure this path is correct to your database connection module
