@@ -47,6 +47,6 @@ This project is currently in active development. We are working on adding new fe
 
 ## License
 
-CommuniCraft is licensed under the ISC license. See the LICENSE file for more details.
+CommuniCraft is licensed under the ISC license. 
 
      
