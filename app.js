@@ -18,6 +18,7 @@ const bookRouter= require('./routes/bookRoutes');
 const borrowRouter = require('./routes/borrowRoutes');
 const retRouter = require('./routes/retRoutes');
 const skillRouter=require('./routes/skillRoutes');
+const collaborationsRoutes = require('./routes/collaborations.routes');
 
 const PORT = process.env.PORT || 3000;
 
@@ -30,6 +31,7 @@ app.use('/api/bookingRes', bookRouter);
 app.use('/api/borrowRes',borrowRouter );
 app.use('/api/retBor',retRouter );
 app.use('/api/skill',skillRouter);
+app.use('/api/collaborations', collaborationsRoutes);
 
 
 app.listen(PORT, () => {
