@@ -75,7 +75,8 @@ exports.getLoggedInUserCollaborationById = (req, res) => {
             res.status(500).json({ error: err });
             return;
         }
-        if (!count['COUNT(*)']) {
+
+        if (!count[0]['COUNT(*)']) {
             res.status(500).json({ error: "You are not in this collaboration, id=" + collaborationId });
             return;
         }
