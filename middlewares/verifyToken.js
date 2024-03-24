@@ -6,7 +6,7 @@ const verifyToken = (req, res, next) => {
   const token = authHeader && authHeader.split(' ')[1];
 
   if (!token) {
-    return res.status(401).json({ message: 'Access denied. No token provided. You should login' });
+    return res.status(401).json({ message: 'Access denied. No token provided.' });
   }
 
   try {
