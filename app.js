@@ -19,6 +19,9 @@ const borrowRouter = require('./routes/borrowRoutes');
 const retRouter = require('./routes/retRoutes');
 const skillRouter=require('./routes/skillRoutes');
 const collaborationsRoutes = require('./routes/collaborations.routes');
+const projectroute =require("./routes/projectroutes");
+
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -32,6 +35,8 @@ app.use('/api/borrowRes',borrowRouter );
 app.use('/api/retBor',retRouter );
 app.use('/api/skill',skillRouter);
 app.use('/api/collaborations', collaborationsRoutes);
+app.use('/api/project', projectroute);
+
 
 
 app.listen(PORT, () => {
