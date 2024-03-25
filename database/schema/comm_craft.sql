@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2024 at 09:52 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.1.17
+-- Generation Time: Mar 22, 2024 at 12:12 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -81,6 +81,17 @@ CREATE TABLE `material` (
   `MaterialID` int(50) NOT NULL,
   `MaterialName` varchar(255) NOT NULL,
   `Price` int(255) NOT NULL,
+  `Quantity` int(255) NOT NULL,
+  `Available` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+---- Table structure for table `material`
+--
+
+CREATE TABLE `material` (
+  `MaterialID` int(50) NOT NULL,
+  `MaterialName` varchar(255) NOT NULL,
+  `Price` varchar(255) NOT NULL,
   `Quantity` int(100) NOT NULL,
   `Available` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -101,23 +112,65 @@ INSERT INTO `material` (`MaterialID`, `MaterialName`, `Price`, `Quantity`, `Avai
 -- --------------------------------------------------------
 
 --
+-- Indexes for table `material`
+--
+ALTER TABLE `material`
+  ADD PRIMARY KEY (`MaterialID`);
+COMMIT;
+
 -- Table structure for table `project`
 --
 
-CREATE TABLE `project` (
-  `ProjectID` int(50) NOT NULL,
-  `Title` varchar(255) NOT NULL,
-  `Description` varchar(500) NOT NULL,
-  `Difficulty` varchar(300) NOT NULL,
-  `Material_id` varchar(255) NOT NULL,
-  `Skills` varchar(500) NOT NULL,
-  `GroupSize` int(100) NOT NULL,
-  `Ranging` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `project` (
+  `ProjectID` int(50) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(255) NULL,
+  `Description` varchar(500) DEFAULT NULL,
+  `Difficulty` varchar(300) DEFAULT NULL,
+  `Material_id` int(255) NOT NULL,
+  `Skills` varchar(500) DEFAULT NULL,
+  `GroupSize` int(100) DEFAULT NULL,
+  `Ranging` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ProjectID`),
+  KEY `Material_id` (`Material_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- RELATIONSHIPS FOR TABLE `project`:
+--   `Material_id`
+--       `material` -> `MaterialID`
+--
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` VALUES
+(1, 'Cards', 'Create a personalized greeting card', 'Beginner', 123, 'Paper crafting', 1, 'Low'),
+(2, 'Crochet', 'Make a cozy scarf using crochet techniques', 'Intermediate', 456, 'Crocheting', 1, 'Low'),
+(3, 'Jewelry Box', 'Craft a beautiful jewelry box from wood', 'Advanced', 789, 'Woodworking, Painting', 1, 'Medium'),
+(4, 'Knitted Hat', 'Knit a warm hat for winter', 'Intermediate', 101, 'Knitting', 1, 'Low'),
+(5, 'Painted Flower Pot', 'Decorate a flower pot with colorful paint', 'Beginner', 202, 'Painting', 1, 'Low'),
+(6, 'DIY Tote Bag', 'Sew a stylish tote bag from scratch', 'Intermediate', 303, 'Sewing', 1, 'Low'),
+(7, 'Terrarium Garden', 'Build a miniature garden in a glass container', 'Beginner', 404, 'Gardening', 1, 'Low'),
+(8, 'DIY Dreamcatcher', 'Craft a beautiful dreamcatcher with feathers and beads', 'Beginner', 505, 'Crafting', 1, 'Low'),
+(9, 'Handmade Soap', 'Make natural soap bars with essential oils', 'Intermediate', 606, 'Soap making', 1, 'Low'),
+(10, 'DIY Picture Frame', 'Construct a personalized picture frame from wood', 'Beginner', 707, 'Woodworking, Painting', 1, 'Low');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `project`
+--
+ALTER TABLE `project`
+  ADD CONSTRAINT `project_ibfk_1` FOREIGN KEY (`Material_id`) REFERENCES `material` (`MaterialID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 -- Table structure for table `skills_user`
 --
 
@@ -165,8 +218,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `FullName`, `Bio`, `Locations`, `Birthdate`, `Gender`, `Phone`, `SocialLinks`) VALUES
+(1, 'dima', '123', 'd@gmail.com', 'dima ', 'hi, ', 'Nablus', '11-10', 'femal', 5487, 'jhfyurnv'),
 (2, 'MARK8', '$2b$10$6Hsm4EVfus5CRj4VLJcqIObC5.JgS8xtiatmsAWPJxk.GsDfAhKbi', 'ghy', 'Mark Sam', 'Designer', 'NewYork', '11/8', 'Male', 578, 'what'),
 (3, 'sally', '$2b$10$ok9on20z9RycO6gceC/g0.GOhGCHDJIXiJgQzkLnJDz5IylanXji6', 'sa.@g', 'sally Sam', 'Designer', 'NewYork', '11/8', 'femal', 578, 'what');
+(4, 'noor', '$2b$10$gtXo0wiDStwOuvA0gYSr1.OR0OAymev/GJFtwu4nfXA.AQ9iKF1sS', 'noor@mail.com', 'noor', 'bio', 'baita', '07-04-2002', 'Female', 598989898, 'site.com');
 
 -- --------------------------------------------------------
 
