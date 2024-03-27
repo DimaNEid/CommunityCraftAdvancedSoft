@@ -54,7 +54,6 @@ INSERT INTO `borrow` (`borrow_id`, `UserID`, `MaterialID`, `startDate`, `endDate
 
 CREATE TABLE `collaborations` (
   `collaboration_id` int(50) NOT NULL,
-  `project_id` int(50) NOT NULL,
   `status` varchar(255) NOT NULL,
   `time` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
