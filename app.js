@@ -9,7 +9,7 @@ const app = express();
 const userRouter = require('./routes/userRoutes');
 const resRouter = require('./routes/resRoutes');
 const collaborationsRoutes = require('./routes/collaborations.routes');
-
+const projectroute =require("./routes/projectroutes");
 
 
 
@@ -21,6 +21,7 @@ app.use(express.json());
 app.use('/api/users', userRouter);
 app.use('/api/resources', resRouter);
 app.use('/api/collaborations', collaborationsRoutes);
+app.use('/api/project', projectroute);
 
 
 
