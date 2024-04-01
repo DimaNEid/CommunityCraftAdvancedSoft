@@ -1,13 +1,13 @@
 const axios = require('axios');
 
 
-async function fetchTemperature(city) {
+async function Temp(city) {
     try {
         const apiKey = '624fcba8a319670eb896b5639477b7e2'; 
         const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
         
         
-        const response = await axios.get(apiUrl);
+        const response = await axios.get(url);
         
       
         const temperature = response.data.main.temp;
@@ -18,4 +18,4 @@ async function fetchTemperature(city) {
     }
 }
 
-module.exports = { fetchTemperature };
+module.exports = { Temp };
