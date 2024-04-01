@@ -2,6 +2,8 @@ const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
 const cron = require('node-cron');
+const axios = require('axios');
+const { fetchTemperature } = require('./externalAPI/weather');
 
 require('dotenv').config();
 //console.log(process.env.JWT_SECRET);
@@ -36,6 +38,19 @@ app.use('/api/retBor',retRouter );
 app.use('/api/skill',skillRouter);
 app.use('/api/collaborations', collaborationsRoutes);
 app.use('/api/project', projectroute);
+
+app.get('/api/temperature', async (req, res) => {
+    try {
+        const city = req.body.city; 
+        console.log(city);
+        const temperature = await fetchTemperature(city);
+        res.json({ city, temperature });
+    } catch (error) {
+        console.error('Error fetching temperature:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+})
+
 
 
 
