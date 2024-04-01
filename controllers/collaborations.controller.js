@@ -25,7 +25,7 @@ exports.createCollaboration = (req, res) => {
                 return;
             }
 
-            res.status(200).json({ message: 'Collaboration craeted successfully' })
+            res.status(201).json({ message: 'Collaboration craeted successfully' })
         });
     });
 
@@ -77,7 +77,7 @@ exports.getLoggedInUserCollaborationById = (req, res) => {
         }
 
         if (!count[0]['COUNT(*)']) {
-            res.status(500).json({ error: "You are not in this collaboration, id=" + collaborationId });
+            res.status(403).json({ error: "You are not in this collaboration, id=" + collaborationId });
             return;
         }
 
@@ -109,7 +109,7 @@ exports.updateLoggedInUserCollaborationById = (req, res) => {
             return;
         }
         if (!count[0]['COUNT(*)']) {
-            res.status(500).json({ error: "You are not in this collaboration, id=" + collaborationId });
+            res.status(403).json({ error: "You are not in this collaboration, id=" + collaborationId });
             return;
         }
 
@@ -175,7 +175,7 @@ exports.withdrawFromCollaboration = (req, res) => {
                 return;
             }
             if (count['COUNT(*)']) {
-                res.status(200).json({ message: 'Withdraw successfully' });
+                res.status(403).json({ message: 'Withdraw successfully' });
                 return;
             }
 
