@@ -2,11 +2,11 @@ const bcrypt = require('bcrypt');
 const connection = require('../database/connection');
 
 exports.createRes = (req, res) => {
-    const { MaterialID, MaterialName, Price, Quantity, Available } = req.body;
+    const { MaterialID: Material_id, MaterialName, Price, Quantity, Available } = req.body;
 
     // Check if the MaterialID already exists
     const checkSql = 'SELECT * FROM material WHERE MaterialID = ?';
-    connection.query(checkSql, [MaterialID], (checkErr, checkResult) => {
+    connection.query(checkSql, [Material_id], (checkErr, checkResult) => {
         if (checkErr) {
             console.error('Error checking material existence in the database:', checkErr);
             res.status(500).json({ error: 'Internal server error' });
@@ -21,7 +21,7 @@ exports.createRes = (req, res) => {
 
         // Proceed with inserting the new resource
         const insertSql = 'INSERT INTO material (MaterialID, MaterialName, Price, Quantity, Available) VALUES (?, ?, ?, ?, ?)';
-        connection.query(insertSql, [MaterialID, MaterialName, Price, Quantity, Available], (insertErr, result) => {
+        connection.query(insertSql, [Material_id, MaterialName, Price, Quantity, Available], (insertErr, result) => {
             if (insertErr) {
                 console.error('Error inserting material resources into database:', insertErr);
                 res.status(500).json({ error: 'Internal server error' });
