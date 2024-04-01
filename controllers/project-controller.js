@@ -149,3 +149,83 @@ exports.getProjectsByCategory = (req, res) => {
         res.status(200).json({ projects: result });
     });
 };
+
+// Display a project
+exports.display = (req, res) => {
+    const projectId = req.params.id;
+
+    const sqlQuery = 'SELECT * FROM project WHERE ProjectID = ?';
+
+    connection.query(sqlQuery, [projectId], (err, result) => {
+        if (err) {
+            console.error("Error retrieving project:", err);
+            return res.status(500).json({ error: 'Could not retrieve project.' });
+        }
+        
+        if (result.length === 0) {
+            return res.status(404).json({ message: 'No project found with the specified ID.' });
+        }
+
+        console.log("Project retrieved successfully");
+        res.status(200).json({ project: result });
+    });
+};
+
+// Share a project
+exports.share = (req, res) => {
+    // Implement the logic for sharing the project on social media
+    // This could involve generating a shareable link and/or calling a social media API
+};
+
+// Comment on a project
+exports.comment = (req, res) => {
+    const projectId = req.params.id;
+    const { commentText, userId } = req.body;
+
+    const sqlQuery = 'INSERT INTO comments (ProjectID, CommentText, UserID) VALUES (?, ?, ?)';
+
+    connection.query(sqlQuery, [projectId, commentText, userId], (err, result) => {
+        if (err) {
+            console.error("Error adding comment:", err);
+            return res.status(500).json({ error: 'Could not add comment to project.' });
+        }
+
+        console.log("Comment added successfully");
+        res.status(200).json({ message: 'Comment added successfully' });
+    });
+};
+
+// Like a project
+exports.like = (req, res) => {
+    const projectId = req.params.id;
+    const { userId } = req.body;
+
+    const sqlQuery = 'INSERT INTO likes (ProjectID, UserID) VALUES (?, ?)';
+
+    connection.query(sqlQuery, [projectId, userId], (err, result) => {
+        if (err) {
+            console.error("Error adding like:", err);
+            return res.status(500).json({ error: 'Could not add like to project.' });
+        }
+
+        console.log("Like added successfully");
+        res.status(200).json({ message: 'Like added successfully' });
+    });
+};
+
+// Search for projects
+exports.search = (req, res) => {
+    const searchQuery = req.query.q;
+
+    const sqlQuery = 'SELECT * FROM project WHERE Title LIKE ? OR Description LIKE ?';
+
+    connection.query(sqlQuery, [`%${searchQuery}%`, `%${searchQuery}%`], (err, result) => {
+        if (err) {
+            console.error("Error searching projects:", err);
+            return res.status(500).json({ error: 'Could not search for projects.' });
+        }
+
+        console.log("Projects searched successfully");
+        res.status(200).json({ projects: result });
+    });
+};

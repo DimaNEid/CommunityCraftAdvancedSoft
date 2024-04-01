@@ -8,8 +8,8 @@ router.put('/update-project', projectController.updateProject);
 router.post('/create-project', projectController.createProject);
 router.delete('/delete-project/:id', projectController.deleteProjectnew);
 router.get('/difficulty/:difficulty', projectController.getProjectsByDifficulty);
-
 router.get('/category/:category/:value', projectController.getProjectsByCategory);
+
 
 //  /api/project/get-project-by-id
 //  /api/project/getallprojects
