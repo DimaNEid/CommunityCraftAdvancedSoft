@@ -49,4 +49,17 @@ This project is currently in active development. We are working on adding new fe
 
 CommuniCraft is licensed under the ISC license. 
 
+## Project Testing
+
+<footer style="background-color: #f8f9fa; padding: 20px; text-align: center;">
+    <p>Created by Rayhan Shhadeh, Dima Eid, Sema Hodali, Noor Alhuda Hamayel </p>
+
+    <p>You Could find the whole project API's Documentation on [[https://bold-water-398647.postman.co/workspace/4030a105-54e3-4e0f-8e55-157609496ca7|Here]]
+
+<p></p>
+
+
+<img src="https://images.pexels.com/photos/301703/pexels-photo-301703.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Footer Image" style="width: 10px; height: 10px;">
+
+</footer>
      
