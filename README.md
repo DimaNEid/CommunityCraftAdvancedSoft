@@ -45,6 +45,14 @@ We welcome contributions to CommuniCraft! Please refer to our contribution guide
 
 This project is currently in active development. We are working on adding new features and improving existing ones.
 
+# Project Testing And Documentation
+
+**Created by Rayhan Shhadeh, Dima Eid, Sema Hodali, Noor Alhuda Hamayel**
+
+[Documentation](https://bold-water-398647.postman.co/workspace/4030a105-54e3-4e0f-8e55-157609496ca7)
+
+![Project Image](https://images.pexels.com/photos/301703/pexels-photo-301703.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)
+
 ## License
 
 CommuniCraft is licensed under the ISC license. 
